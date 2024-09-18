@@ -21,10 +21,12 @@ def register(request):
 	            username = form.cleaned_data.get('username')
 	            messages.success(request, f'Your account has been created..!')
 	            return redirect('login')
-        else: #<-------method wil be GET...
+        elif request.method == 'GET': #<-------method wil be GET...
             #whenever we come here  from url then it will be GET method.
             
        		 form = UserRegisterForm()
+        else
+            return render(request,'users/method_invalid.html')
         myform={
          'form':form
 
